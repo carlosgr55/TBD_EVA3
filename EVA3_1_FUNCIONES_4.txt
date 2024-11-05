@@ -1,0 +1,96 @@
+EVA3_1_FUNCIONES_4
+
+MySQL Shell 8.0.37
+
+Copyright (c) 2016, 2024, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  SQL > \connect --mc root@localhost
+Creating a Classic session to 'root@localhost'
+Fetching global names for auto-completion... Press ^C to stop.
+Your MySQL connection id is 12
+Server version: 8.0.37 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3306 ssl  SQL > use empresa;
+Default schema set to `empresa`.
+Fetching global names, object names from `empresa` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  empresa  SQL > select count(*) from countries;
+ERROR: 1146 (42S02): Table 'empresa.countries' doesn't exist
+ MySQL  localhost:3306 ssl  empresa  SQL > use practica;
+Default schema set to `practica`.
+Fetching global names, object names from `practica` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  practica  SQL > select count(*) from countries;
++----------+
+| count(*) |
++----------+
+|       27 |
++----------+
+1 row in set (0.0099 sec)
+ MySQL  localhost:3306 ssl  practica  SQL > select regresa_valor() from countries;
+ERROR: 1305 (42000): FUNCTION practica.regresa_valor does not exist
+ MySQL  localhost:3306 ssl  practica  SQL > select regresa_valor() from countries;
++-----------------+
+| regresa_valor() |
++-----------------+
+|               5 |
+|               5 |
+|               5 |
+|               5 |
+|               5 |
+|               5 |
+|               5 |
+|               5 |
+|               5 |
+|               5 |
+|               5 |
+|               5 |
+|               5 |
+|               5 |
+|               5 |
+|               5 |
+|               5 |
+|               5 |
+|               5 |
+|               5 |
+|               5 |
+|               5 |
+|               5 |
+|               5 |
+|               5 |
+|               5 |
+|               5 |
++-----------------+
+27 rows in set (0.0011 sec)
+ MySQL  localhost:3306 ssl  practica  SQL > select regresa_valor();
++-----------------+
+| regresa_valor() |
++-----------------+
+|               5 |
++-----------------+
+1 row in set (0.0004 sec)
+ MySQL  localhost:3306 ssl  practica  SQL > select mostrar_mensaje('MOTOMAMI');
++-----------------------------+
+| mostrar_mensaje('MOTOMAMI') |
++-----------------------------+
+| TU MENSAJE ES MOTOMAMI      |
++-----------------------------+
+1 row in set (0.0007 sec)
+ MySQL  localhost:3306 ssl  practica  SQL > select sumar_numeros(2, 5);
++---------------------+
+| sumar_numeros(2, 5) |
++---------------------+
+|                   7 |
++---------------------+
+1 row in set (0.0007 sec)
+ MySQL  localhost:3306 ssl  practica  SQL > select sumar_numeros(9028, 2);
++------------------------+
+| sumar_numeros(9028, 2) |
++------------------------+
+|                   9030 |
++------------------------+
+1 row in set (0.0006 sec)
+ MySQL  localhost:3306 ssl  practica  SQL >
