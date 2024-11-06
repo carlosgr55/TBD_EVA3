@@ -1,0 +1,182 @@
+EVA3_2_IF_5
+
+MySQL Shell 8.0.37
+
+Copyright (c) 2016, 2024, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  SQL > \connect --mc root@localhost
+Creating a Classic session to 'root@localhost'
+Fetching global names for auto-completion... Press ^C to stop.
+Your MySQL connection id is 38
+Server version: 8.0.37 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3306 ssl  SQL > create database tbd_eva3;
+Query OK, 1 row affected (0.0121 sec)
+ MySQL  localhost:3306 ssl  SQL > show tablas;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'tablas' at line 1
+ MySQL  localhost:3306 ssl  SQL > show tables;
+ERROR: 1046 (3D000): No database selected
+ MySQL  localhost:3306 ssl  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| empresa            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| practica           |
+| sakila             |
+| tbd_eva1           |
+| tbd_eva2           |
+| tbd_eva3           |
+| veterinaria_bd     |
+| veterinaria_schema |
+| world              |
++--------------------+
+12 rows in set (0.0009 sec)
+ MySQL  localhost:3306 ssl  SQL > use tbd_eva3;
+Default schema set to `tbd_eva3`.
+Fetching global names, object names from `tbd_eva3` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select comparar_numeros(5,8);
+ERROR: 1305 (42000): FUNCTION tbd_eva3.contat does not exist
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select comparar_numeros(5,8);
++-----------------------+
+| comparar_numeros(5,8) |
++-----------------------+
+| 5 es menor que 8      |
++-----------------------+
+1 row in set (0.0009 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select comparar_numeros(8, 10);
++-------------------------+
+| comparar_numeros(8, 10) |
++-------------------------+
+| 8 es menor que 10       |
++-------------------------+
+1 row in set (0.0004 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select comparar_numeros(10, 8);
++-------------------------+
+| comparar_numeros(10, 8) |
++-------------------------+
+| 10 es mayor que 8       |
++-------------------------+
+1 row in set (0.0004 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select comparar_numeros(10, 10);
++--------------------------+
+| comparar_numeros(10, 10) |
++--------------------------+
+| 10 es igual que 10       |
++--------------------------+
+1 row in set (0.0004 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select comparar_numeros(10, 15);
++--------------------------+
+| comparar_numeros(10, 15) |
++--------------------------+
+| 10 es menor que 15       |
++--------------------------+
+1 row in set (0.0004 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select esPar(3);
++------------+
+| esPar(3)   |
++------------+
+| es impar!! |
++------------+
+1 row in set (0.0008 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select esPar(2);
++----------+
+| esPar(2) |
++----------+
+| es par!! |
++----------+
+1 row in set (0.0004 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select esPar(4);
++----------+
+| esPar(4) |
++----------+
+| es par!! |
++----------+
+1 row in set (0.0004 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select esPar(5);
++------------+
+| esPar(5)   |
++------------+
+| es impar!! |
++------------+
+1 row in set (0.0004 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select esPar(6);
++----------+
+| esPar(6) |
++----------+
+| es par!! |
++----------+
+1 row in set (0.0004 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select dia_semana(8);
+ERROR: 1406 (22001): Data too long for column 'resu' at row 1
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select dia_semana(8);
++---------------+
+| dia_semana(8) |
++---------------+
+| stream brat   |
++---------------+
+1 row in set (0.0008 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select dia_semana(5);
++---------------+
+| dia_semana(5) |
++---------------+
+| jueves        |
++---------------+
+1 row in set (0.0004 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select dia_semana(3);
++---------------+
+| dia_semana(3) |
++---------------+
+| martes        |
++---------------+
+1 row in set (0.0004 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select dia_semana(2);
++---------------+
+| dia_semana(2) |
++---------------+
+| lunes         |
++---------------+
+1 row in set (0.0004 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select dia_semana(1);
++---------------+
+| dia_semana(1) |
++---------------+
+| domingo       |
++---------------+
+1 row in set (0.0004 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select dia_semana(0);
++---------------+
+| dia_semana(0) |
++---------------+
+| stream brat   |
++---------------+
+1 row in set (0.0004 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select conversion_temp(1, 0);
++-----------------------+
+| conversion_temp(1, 0) |
++-----------------------+
+|                   273 |
++-----------------------+
+1 row in set (0.0008 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select conversion_temp(2, 25);
++------------------------+
+| conversion_temp(2, 25) |
++------------------------+
+|                     77 |
++------------------------+
+1 row in set (0.0004 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select conversion_temp(3, 279);
++-------------------------+
+| conversion_temp(3, 279) |
++-------------------------+
+|                       6 |
++-------------------------+
+1 row in set (0.0004 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL >
