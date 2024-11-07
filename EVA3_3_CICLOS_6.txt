@@ -1,0 +1,438 @@
+EVA3_3_CICLOS_1
+
+MySQL Shell 8.0.37
+
+Copyright (c) 2016, 2024, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  SQL > \connect --mc root@localhost
+Creating a Classic session to 'root@localhost'
+Fetching global names for auto-completion... Press ^C to stop.
+Your MySQL connection id is 45
+Server version: 8.0.37 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3306 ssl  SQL > use tbd_eva3;
+Default schema set to `tbd_eva3`.
+Fetching global names, object names from `tbd_eva3` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select sumatoria_loop(5);
+ERROR: 1054 (42S22): Unknown column 'cont' in 'field list'
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select sumatoria_loop(5);
++-------------------+
+| sumatoria_loop(5) |
++-------------------+
+|                30 |
++-------------------+
+1 row in set (0.0011 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select sumatoria_loop(4);
++-------------------+
+| sumatoria_loop(4) |
++-------------------+
+|                20 |
++-------------------+
+1 row in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select sumatoria_loop(100);
++---------------------+
+| sumatoria_loop(100) |
++---------------------+
+|               10100 |
++---------------------+
+1 row in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select sumatoria_while(50);
+ERROR: 1305 (42000): FUNCTION tbd_eva3.sumatoria_while does not exist
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select sumar_while(50);
++-----------------+
+| sumar_while(50) |
++-----------------+
+|            1275 |
++-----------------+
+1 row in set (0.0012 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select sumar_while(1`);
+                                         `> ^C
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select sumar_while(1);
++----------------+
+| sumar_while(1) |
++----------------+
+|              1 |
++----------------+
+1 row in set (0.0004 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select sumar_while(2);
++----------------+
+| sumar_while(2) |
++----------------+
+|              3 |
++----------------+
+1 row in set (0.0004 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select sumar_while(4);
++----------------+
+| sumar_while(4) |
++----------------+
+|             10 |
++----------------+
+1 row in set (0.0004 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select sumar_while(5);
++----------------+
+| sumar_while(5) |
++----------------+
+|             15 |
++----------------+
+1 row in set (0.0004 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select sumar_repeat(40);
++------------------+
+| sumar_repeat(40) |
++------------------+
+|              820 |
++------------------+
+1 row in set (0.0010 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select sumar_repeat(1);
++-----------------+
+| sumar_repeat(1) |
++-----------------+
+|               1 |
++-----------------+
+1 row in set (0.0004 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_repeat(2,3)
+                                         -> ;
+ERROR: 1264 (22003): Out of range value for column 'base' at row 1
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_repeat(2,3) ;
+-- query aborted
+ERROR: 1317 (70100): Query execution was interrupted
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_repeat(2,3);
+-- query aborted
+ERROR: 1317 (70100): Query execution was interrupted
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_repeat(2,3);
++----------------------+
+| potencia_repeat(2,3) |
++----------------------+
+|                    4 |
++----------------------+
+1 row in set (0.0009 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_repeat(2,3);
++----------------------+
+| potencia_repeat(2,3) |
++----------------------+
+|                    4 |
++----------------------+
+1 row in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_repeat(2,3);
++----------------------+
+| potencia_repeat(2,3) |
++----------------------+
+|                    4 |
++----------------------+
+1 row in set (0.0007 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_repeat(2,3);
++----------------------+
+| potencia_repeat(2,3) |
++----------------------+
+|                    8 |
++----------------------+
+1 row in set (0.0007 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_repeat(2,4);
++----------------------+
+| potencia_repeat(2,4) |
++----------------------+
+|                   16 |
++----------------------+
+1 row in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_repeat(2,2);
++----------------------+
+| potencia_repeat(2,2) |
++----------------------+
+|                    4 |
++----------------------+
+1 row in set (0.0004 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_repeat(5,2);
++----------------------+
+| potencia_repeat(5,2) |
++----------------------+
+|                   25 |
++----------------------+
+1 row in set (0.0004 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_repeat(5,3);
++----------------------+
+| potencia_repeat(5,3) |
++----------------------+
+|                  125 |
++----------------------+
+1 row in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_while(5,3);
++---------------------+
+| potencia_while(5,3) |
++---------------------+
+|                 625 |
++---------------------+
+1 row in set (0.0009 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_while(5,3);
++---------------------+
+| potencia_while(5,3) |
++---------------------+
+|                 625 |
++---------------------+
+1 row in set (0.0009 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_while(5,2);
++---------------------+
+| potencia_while(5,2) |
++---------------------+
+|                 125 |
++---------------------+
+1 row in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_while(5,1);
++---------------------+
+| potencia_while(5,1) |
++---------------------+
+|                  25 |
++---------------------+
+1 row in set (0.0004 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_while(5,1);
++---------------------+
+| potencia_while(5,1) |
++---------------------+
+|                  25 |
++---------------------+
+1 row in set (0.0008 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_while(2,2);
++---------------------+
+| potencia_while(2,2) |
++---------------------+
+|                   8 |
++---------------------+
+1 row in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_while(2,2);
++---------------------+
+| potencia_while(2,2) |
++---------------------+
+|                   8 |
++---------------------+
+1 row in set (0.0008 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_while(2,2);
++---------------------+
+| potencia_while(2,2) |
++---------------------+
+|                   4 |
++---------------------+
+1 row in set (0.0008 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_while(2,3);
+ERROR: 1264 (22003): Out of range value for column 'potencia' at row 1
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_while(5,3);
+ERROR: 1264 (22003): Out of range value for column 'potencia' at row 1
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL >
+MySQL Shell 8.0.37
+
+Copyright (c) 2016, 2024, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  SQL > \connect --mc root@localhost
+Creating a Classic session to 'root@localhost'
+Fetching global names for auto-completion... Press ^C to stop.
+Your MySQL connection id is 48
+Server version: 8.0.37 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3306 ssl  SQL > use tbd_eva3;
+Default schema set to `tbd_eva3`.
+Fetching global names, object names from `tbd_eva3` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_while(5,3)
+                                         -> ;
++---------------------+
+| potencia_while(5,3) |
++---------------------+
+|                   5 |
++---------------------+
+1 row in set (0.0013 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_while(5,3) ;
++---------------------+
+| potencia_while(5,3) |
++---------------------+
+|                  25 |
++---------------------+
+1 row in set (0.0010 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_while(5,3) ;
++---------------------+
+| potencia_while(5,3) |
++---------------------+
+|                 125 |
++---------------------+
+1 row in set (0.0011 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_while(5,2) ;
++---------------------+
+| potencia_while(5,2) |
++---------------------+
+|                 125 |
++---------------------+
+1 row in set (0.0006 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_while(5,1) ;
++---------------------+
+| potencia_while(5,1) |
++---------------------+
+|                 125 |
++---------------------+
+1 row in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_while(4,2) ;
++---------------------+
+| potencia_while(4,2) |
++---------------------+
+|                  64 |
++---------------------+
+1 row in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_while(4,2) ;
++---------------------+
+| potencia_while(4,2) |
++---------------------+
+|                  16 |
++---------------------+
+1 row in set (0.0012 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_while(5,1) ;
++---------------------+
+| potencia_while(5,1) |
++---------------------+
+|                  25 |
++---------------------+
+1 row in set (0.0006 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_while(5,3) ;
++---------------------+
+| potencia_while(5,3) |
++---------------------+
+|                  25 |
++---------------------+
+1 row in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_while(5,3) ;
++---------------------+
+| potencia_while(5,3) |
++---------------------+
+|                  25 |
++---------------------+
+1 row in set (0.0011 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_while(4,2) ;
++---------------------+
+| potencia_while(4,2) |
++---------------------+
+|                  16 |
++---------------------+
+1 row in set (0.0004 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_while(5,1) ;
++---------------------+
+| potencia_while(5,1) |
++---------------------+
+|                  25 |
++---------------------+
+1 row in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_while(5,1) ;
++---------------------+
+| potencia_while(5,1) |
++---------------------+
+|                 125 |
++---------------------+
+1 row in set (0.0010 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_while(4,2) ;
++---------------------+
+| potencia_while(4,2) |
++---------------------+
+|                 256 |
++---------------------+
+1 row in set (0.0006 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_while(5,3) ;
++---------------------+
+| potencia_while(5,3) |
++---------------------+
+|                3125 |
++---------------------+
+1 row in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_while(5,3) ;
++---------------------+
+| potencia_while(5,3) |
++---------------------+
+|                 625 |
++---------------------+
+1 row in set (0.0012 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_while(4,2) ;
++---------------------+
+| potencia_while(4,2) |
++---------------------+
+|                  64 |
++---------------------+
+1 row in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_while(4,2) ;
++---------------------+
+| potencia_while(4,2) |
++---------------------+
+|                  64 |
++---------------------+
+1 row in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_while(5,1) ;
++---------------------+
+| potencia_while(5,1) |
++---------------------+
+|                  25 |
++---------------------+
+1 row in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_while(5,1) ;
++---------------------+
+| potencia_while(5,1) |
++---------------------+
+|                   5 |
++---------------------+
+1 row in set (0.0010 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_while(4,2) ;
++---------------------+
+| potencia_while(4,2) |
++---------------------+
+|                  16 |
++---------------------+
+1 row in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_while(5,3) ;
++---------------------+
+| potencia_while(5,3) |
++---------------------+
+|                 125 |
++---------------------+
+1 row in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_while(4,2) ;
++---------------------+
+| potencia_while(4,2) |
++---------------------+
+|                  16 |
++---------------------+
+1 row in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_while(2,3) ;
++---------------------+
+| potencia_while(2,3) |
++---------------------+
+|                   8 |
++---------------------+
+1 row in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_repeat(2,2);
++----------------------+
+| potencia_repeat(2,2) |
++----------------------+
+|                    8 |
++----------------------+
+1 row in set (0.0010 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_repeat(2,2);
++----------------------+
+| potencia_repeat(2,2) |
++----------------------+
+|                    4 |
++----------------------+
+1 row in set (0.0011 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_while(2,3) ;
++---------------------+
+| potencia_while(2,3) |
++---------------------+
+|                   8 |
++---------------------+
+1 row in set (0.0007 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select potencia_repeat(5,2);
++----------------------+
+| potencia_repeat(5,2) |
++----------------------+
+|                   25 |
++----------------------+
+1 row in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL >
