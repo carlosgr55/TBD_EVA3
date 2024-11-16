@@ -1,0 +1,599 @@
+EVA3_8_CURSORES_1
+
+MySQL  localhost:3306 ssl  practica  SQL > use tbd_eva3;
+Default schema set to `tbd_eva3`.
+Fetching global names, object names from `tbd_eva3` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > create table persona(
+                                         -> id int auto_increment key,
+                                         -> nombre varchar(50) not null,
+                                         -> apat varchar(50) not null,
+                                         -> amat varchar(50),
+                                         -> fecha_nac date not null,
+                                         -> clave_rfc varchar(15));
+Query OK, 0 rows affected (0.0243 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL >
+MySQL Shell 8.0.37
+
+Copyright (c) 2016, 2024, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \SQL
+Unknown command: '\SQL'
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  SQL > \connect --mc root@localhost
+Creating a Classic session to 'root@localhost'
+Fetching global names for auto-completion... Press ^C to stop.
+Your MySQL connection id is 25
+Server version: 8.0.37 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3306 ssl  SQL > use tbd_eva3;
+Default schema set to `tbd_eva3`.
+Fetching global names, object names from `tbd_eva3` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > desc persona;
++-----------+-------------+------+-----+---------+----------------+
+| Field     | Type        | Null | Key | Default | Extra          |
++-----------+-------------+------+-----+---------+----------------+
+| id        | int         | NO   | PRI | NULL    | auto_increment |
+| nombre    | varchar(50) | NO   |     | NULL    |                |
+| apat      | varchar(50) | NO   |     | NULL    |                |
+| amat      | varchar(50) | YES  |     | NULL    |                |
+| fecha_nac | date        | NO   |     | NULL    |                |
+| clave_rfc | varchar(15) | YES  |     | NULL    |                |
++-----------+-------------+------+-----+---------+----------------+
+6 rows in set (0.0030 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > insert into persona(nombre, apat, amat, fecha_nac) values
+                                         -> ('Natalia', 'Lafourcade', 'Silva', '1984-02-26'),
+                                         -> ('Julieta', 'Venegas', 'Percevault', '1970-11-24'),
+                                         -> ('Salma', 'Hayek', 'Pinault', '1966-09-02');
+Query OK, 3 rows affected (0.0111 sec)
+
+Records: 3  Duplicates: 0  Warnings: 0
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > insert into persona(nombre, apat, fecha_nac) values
+                                         -> (
+                                         -> 'charli', 'xcx', '1992-08-02'),
+                                         -> ('lana', 'del rey', '1985-06-21'),
+                                         -> ('rosalia', 'vita', '1992-06-25');
+Query OK, 3 rows affected (0.0106 sec)
+
+Records: 3  Duplicates: 0  Warnings: 0
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select * from persona;
++----+---------+------------+------------+------------+-----------+
+| id | nombre  | apat       | amat       | fecha_nac  | clave_rfc |
++----+---------+------------+------------+------------+-----------+
+|  1 | Natalia | Lafourcade | Silva      | 1984-02-26 | NULL      |
+|  2 | Julieta | Venegas    | Percevault | 1970-11-24 | NULL      |
+|  3 | Salma   | Hayek      | Pinault    | 1966-09-02 | NULL      |
+|  4 | charli  | xcx        | NULL       | 1992-08-02 | NULL      |
+|  5 | lana    | del rey    | NULL       | 1985-06-21 | NULL      |
+|  6 | rosalia | vita       | NULL       | 1992-06-25 | NULL      |
++----+---------+------------+------------+------------+-----------+
+6 rows in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select nombre, apat, ifnull(amat, 'x') from persona;
++---------+------------+-------------------+
+| nombre  | apat       | ifnull(amat, 'x') |
++---------+------------+-------------------+
+| Natalia | Lafourcade | Silva             |
+| Julieta | Venegas    | Percevault        |
+| Salma   | Hayek      | Pinault           |
+| charli  | xcx        | x                 |
+| lana    | del rey    | x                 |
+| rosalia | vita       | x                 |
++---------+------------+-------------------+
+6 rows in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > insert into persona(nombre, apat, fecha_nac) values ( 'beyonce', 'knowles', '1981-09-04'), ('lady', 'gaga', '1986-03-28');
+Query OK, 2 rows affected (0.0024 sec)
+
+Records: 2  Duplicates: 0  Warnings: 0
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select nombre, apat, ifnull(amat, 'x') from persona;
++---------+------------+-------------------+
+| nombre  | apat       | ifnull(amat, 'x') |
++---------+------------+-------------------+
+| Natalia | Lafourcade | Silva             |
+| Julieta | Venegas    | Percevault        |
+| Salma   | Hayek      | Pinault           |
+| charli  | xcx        | x                 |
+| lana    | del rey    | x                 |
+| rosalia | vita       | x                 |
+| beyonce | knowles    | x                 |
+| lady    | gaga       | x                 |
++---------+------------+-------------------+
+8 rows in set (0.0006 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > desc persona;
++-----------+-------------+------+-----+---------+----------------+
+| Field     | Type        | Null | Key | Default | Extra          |
++-----------+-------------+------+-----+---------+----------------+
+| id        | int         | NO   | PRI | NULL    | auto_increment |
+| nombre    | varchar(50) | NO   |     | NULL    |                |
+| apat      | varchar(50) | NO   |     | NULL    |                |
+| amat      | varchar(50) | YES  |     | NULL    |                |
+| fecha_nac | date        | NO   |     | NULL    |                |
+| clave_rfc | varchar(15) | YES  |     | NULL    |                |
++-----------+-------------+------+-----+---------+----------------+
+6 rows in set (0.0013 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > call crear_rfc();
+ERROR: 1305 (42000): PROCEDURE tbd_eva3.crear_rfc does not exist
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > call crear_rfc();
+ERROR: 1364 (HY000): Field 'nombre' doesn't have a default value
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select * from persona;
++----+---------+------------+------------+------------+-----------+
+| id | nombre  | apat       | amat       | fecha_nac  | clave_rfc |
++----+---------+------------+------------+------------+-----------+
+|  1 | Natalia | Lafourcade | Silva      | 1984-02-26 | NULL      |
+|  2 | Julieta | Venegas    | Percevault | 1970-11-24 | NULL      |
+|  3 | Salma   | Hayek      | Pinault    | 1966-09-02 | NULL      |
+|  4 | charli  | xcx        | NULL       | 1992-08-02 | NULL      |
+|  5 | lana    | del rey    | NULL       | 1985-06-21 | NULL      |
+|  6 | rosalia | vita       | NULL       | 1992-06-25 | NULL      |
+|  7 | beyonce | knowles    | NULL       | 1981-09-04 | NULL      |
+|  8 | lady    | gaga       | NULL       | 1986-03-28 | NULL      |
++----+---------+------------+------------+------------+-----------+
+8 rows in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select nombre from persona;
++---------+
+| nombre  |
++---------+
+| Natalia |
+| Julieta |
+| Salma   |
+| charli  |
+| lana    |
+| rosalia |
+| beyonce |
+| lady    |
++---------+
+8 rows in set (0.0004 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select ifnull(amat, 'x') as apellido_materno from persona;
++------------------+
+| apellido_materno |
++------------------+
+| Silva            |
+| Percevault       |
+| Pinault          |
+| x                |
+| x                |
+| x                |
+| x                |
+| x                |
++------------------+
+8 rows in set (0.0004 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) from persona;
++-------------------------------------------------+
+| rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) |
++-------------------------------------------------+
+| LaSN198402-2626                                 |
+| VePJ197011-2424                                 |
+| HaPS196609-0202                                 |
+| xcxc199208-0202                                 |
+| dexl198506-2121                                 |
+| vixr199206-2525                                 |
+| knxb198109-0404                                 |
+| gaxl198603-2828                                 |
++-------------------------------------------------+
+8 rows in set (0.0011 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) from persona;
++-------------------------------------------------+
+| rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) |
++-------------------------------------------------+
+| LASN198402-2626                                 |
+| VEPJ197011-2424                                 |
+| HAPS196609-0202                                 |
+| XCXC199208-0202                                 |
+| DEXL198506-2121                                 |
+| VIXR199206-2525                                 |
+| KNXB198109-0404                                 |
+| GAXL198603-2828                                 |
++-------------------------------------------------+
+8 rows in set (0.0009 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select fecha_nac from persona;
++------------+
+| fecha_nac  |
++------------+
+| 1984-02-26 |
+| 1970-11-24 |
+| 1966-09-02 |
+| 1992-08-02 |
+| 1985-06-21 |
+| 1992-06-25 |
+| 1981-09-04 |
+| 1986-03-28 |
++------------+
+8 rows in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select fecha_nac from persona;
++------------+
+| fecha_nac  |
++------------+
+| 1984-02-26 |
+| 1970-11-24 |
+| 1966-09-02 |
+| 1992-08-02 |
+| 1985-06-21 |
+| 1992-06-25 |
+| 1981-09-04 |
+| 1986-03-28 |
++------------+
+8 rows in set (0.0004 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) from persona;
++-------------------------------------------------+
+| rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) |
++-------------------------------------------------+
+| LASN198402-266                                  |
+| VEPJ197011-244                                  |
+| HAPS196609-022                                  |
+| XCXC199208-022                                  |
+| DEXL198506-211                                  |
+| VIXR199206-255                                  |
+| KNXB198109-044                                  |
+| GAXL198603-288                                  |
++-------------------------------------------------+
+8 rows in set (0.0009 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) from persona;
+ERROR: 1406 (22001): Data too long for column 'rfc_v' at row 1
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) from persona;
++-------------------------------------------------+
+| rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) |
++-------------------------------------------------+
+| LASN198402-2626                                 |
+| VEPJ197011-2424                                 |
+| HAPS196609-0202                                 |
+| XCXC199208-0202                                 |
+| DEXL198506-2121                                 |
+| VIXR199206-2525                                 |
+| KNXB198109-0404                                 |
+| GAXL198603-2828                                 |
++-------------------------------------------------+
+8 rows in set (0.0009 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) from persona;
++-------------------------------------------------+
+| rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) |
++-------------------------------------------------+
+| LASN198402-2626                                 |
+| VEPJ197011-2424                                 |
+| HAPS196609-0202                                 |
+| XCXC199208-0202                                 |
+| DEXL198506-2121                                 |
+| VIXR199206-2525                                 |
+| KNXB198109-0404                                 |
+| GAXL198603-2828                                 |
++-------------------------------------------------+
+8 rows in set (0.0009 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select fecha_nac from persona;
++------------+
+| fecha_nac  |
++------------+
+| 1984-02-26 |
+| 1970-11-24 |
+| 1966-09-02 |
+| 1992-08-02 |
+| 1985-06-21 |
+| 1992-06-25 |
+| 1981-09-04 |
+| 1986-03-28 |
++------------+
+8 rows in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) from persona;
+ERROR: 1406 (22001): Data too long for column 'rfc_v' at row 1
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) from persona;
++-------------------------------------------------+
+| rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) |
++-------------------------------------------------+
+| LASN1984                                        |
+| VEPJ1970                                        |
+| HAPS1966                                        |
+| XCXC1992                                        |
+| DEXL1985                                        |
+| VIXR1992                                        |
+| KNXB1981                                        |
+| GAXL1986                                        |
++-------------------------------------------------+
+8 rows in set (0.0009 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) from persona;
++-------------------------------------------------+
+| rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) |
++-------------------------------------------------+
+| LASN19844-02-2                                  |
+| VEPJ19700-11-2                                  |
+| HAPS19666-09-0                                  |
+| XCXC19922-08-0                                  |
+| DEXL19855-06-2                                  |
+| VIXR19922-06-2                                  |
+| KNXB19811-09-0                                  |
+| GAXL19866-03-2                                  |
++-------------------------------------------------+
+8 rows in set (0.0008 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) from persona;
++-------------------------------------------------+
+| rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) |
++-------------------------------------------------+
+| LASN198402-26                                   |
+| VEPJ197011-24                                   |
+| HAPS196609-02                                   |
+| XCXC199208-02                                   |
+| DEXL198506-21                                   |
+| VIXR199206-25                                   |
+| KNXB198109-04                                   |
+| GAXL198603-28                                   |
++-------------------------------------------------+
+8 rows in set (0.0006 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) from persona;
++-------------------------------------------------+
+| rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) |
++-------------------------------------------------+
+| LASN02-26                                       |
+| VEPJ11-24                                       |
+| HAPS09-02                                       |
+| XCXC08-02                                       |
+| DEXL06-21                                       |
+| VIXR06-25                                       |
+| KNXB09-04                                       |
+| GAXL03-28                                       |
++-------------------------------------------------+
+8 rows in set (0.0007 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select len(fecha) from persona;
+ERROR: 1305 (42000): FUNCTION tbd_eva3.len does not exist
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select caracter_length(fecha) from persona;
+ERROR: 1305 (42000): FUNCTION tbd_eva3.caracter_length does not exist
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select fecha_nac from persona;
++------------+
+| fecha_nac  |
++------------+
+| 1984-02-26 |
+| 1970-11-24 |
+| 1966-09-02 |
+| 1992-08-02 |
+| 1985-06-21 |
+| 1992-06-25 |
+| 1981-09-04 |
+| 1986-03-28 |
++------------+
+8 rows in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) from persona;
+ERROR: 1406 (22001): Data too long for column 'mes' at row 1
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) from persona;
+ERROR: 1406 (22001): Data too long for column 'mes' at row 1
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) from persona;
+ERROR: 1406 (22001): Data too long for column 'mes' at row 1
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) from persona;
+ERROR: 1406 (22001): Data too long for column 'mes' at row 1
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) from persona;
++-------------------------------------------------+
+| rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) |
++-------------------------------------------------+
+| 02-26                                           |
+| 11-24                                           |
+| 09-02                                           |
+| 08-02                                           |
+| 06-21                                           |
+| 06-25                                           |
+| 09-04                                           |
+| 03-28                                           |
++-------------------------------------------------+
+8 rows in set (0.0010 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) from persona;
++-------------------------------------------------+
+| rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) |
++-------------------------------------------------+
+| 1984-02-26-26                                   |
+| 1970-11-24-24                                   |
+| 1966-09-02-02                                   |
+| 1992-08-02-02                                   |
+| 1985-06-21-21                                   |
+| 1992-06-25-25                                   |
+| 1981-09-04-04                                   |
+| 1986-03-28-28                                   |
++-------------------------------------------------+
+8 rows in set (0.0009 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) from persona;
+ERROR: 1406 (22001): Data too long for column 'rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac)' at row 1
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) from persona;
++-------------------------------------------------+
+| rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) |
++-------------------------------------------------+
+|  ano 1984 mes 02-26 dia 26                      |
+|  ano 1970 mes 11-24 dia 24                      |
+|  ano 1966 mes 09-02 dia 02                      |
+|  ano 1992 mes 08-02 dia 02                      |
+|  ano 1985 mes 06-21 dia 21                      |
+|  ano 1992 mes 06-25 dia 25                      |
+|  ano 1981 mes 09-04 dia 04                      |
+|  ano 1986 mes 03-28 dia 28                      |
++-------------------------------------------------+
+8 rows in set (0.0008 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) from persona;
++-------------------------------------------------+
+| rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) |
++-------------------------------------------------+
+|  ano 1984 mes -02-26 dia 26                     |
+|  ano 1970 mes -11-24 dia 24                     |
+|  ano 1966 mes -09-02 dia 02                     |
+|  ano 1992 mes -08-02 dia 02                     |
+|  ano 1985 mes -06-21 dia 21                     |
+|  ano 1992 mes -06-25 dia 25                     |
+|  ano 1981 mes -09-04 dia 04                     |
+|  ano 1986 mes -03-28 dia 28                     |
++-------------------------------------------------+
+8 rows in set (0.0008 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) from persona;
++-------------------------------------------------+
+| rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) |
++-------------------------------------------------+
+|  ano 1984 mes 02-26 dia 26                      |
+|  ano 1970 mes 11-24 dia 24                      |
+|  ano 1966 mes 09-02 dia 02                      |
+|  ano 1992 mes 08-02 dia 02                      |
+|  ano 1985 mes 06-21 dia 21                      |
+|  ano 1992 mes 06-25 dia 25                      |
+|  ano 1981 mes 09-04 dia 04                      |
+|  ano 1986 mes 03-28 dia 28                      |
++-------------------------------------------------+
+8 rows in set (0.0009 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) from persona;
++-------------------------------------------------+
+| rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) |
++-------------------------------------------------+
+|  ano 1984 mes 02-26 dia 26                      |
+|  ano 1970 mes 11-24 dia 24                      |
+|  ano 1966 mes 09-02 dia 02                      |
+|  ano 1992 mes 08-02 dia 02                      |
+|  ano 1985 mes 06-21 dia 21                      |
+|  ano 1992 mes 06-25 dia 25                      |
+|  ano 1981 mes 09-04 dia 04                      |
+|  ano 1986 mes 03-28 dia 28                      |
++-------------------------------------------------+
+8 rows in set (0.0008 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) from persona;
++-------------------------------------------------+
+| rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) |
++-------------------------------------------------+
+|  ano 1984 mes 02 dia 26                         |
+|  ano 1970 mes 11 dia 24                         |
+|  ano 1966 mes 09 dia 02                         |
+|  ano 1992 mes 08 dia 02                         |
+|  ano 1985 mes 06 dia 21                         |
+|  ano 1992 mes 06 dia 25                         |
+|  ano 1981 mes 09 dia 04                         |
+|  ano 1986 mes 03 dia 28                         |
++-------------------------------------------------+
+8 rows in set (0.0008 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) from persona;
++-------------------------------------------------+
+| rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) |
++-------------------------------------------------+
+| LASN19840226                                    |
+| VEPJ19701124                                    |
+| HAPS19660902                                    |
+| XCXC19920802                                    |
+| DEXL19850621                                    |
+| VIXR19920625                                    |
+| KNXB19810904                                    |
+| GAXL19860328                                    |
++-------------------------------------------------+
+8 rows in set (0.0008 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select fecha_nac from persona;
++------------+
+| fecha_nac  |
++------------+
+| 1984-02-26 |
+| 1970-11-24 |
+| 1966-09-02 |
+| 1992-08-02 |
+| 1985-06-21 |
+| 1992-06-25 |
+| 1981-09-04 |
+| 1986-03-28 |
++------------+
+8 rows in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) from persona;
++-------------------------------------------------+
+| rfc(nombre, apat, ifnull(amat, 'x'), fecha_nac) |
++-------------------------------------------------+
+| LASN19840226                                    |
+| VEPJ19701124                                    |
+| HAPS19660902                                    |
+| XCXC19920802                                    |
+| DEXL19850621                                    |
+| VIXR19920625                                    |
+| KNXB19810904                                    |
+| GAXL19860328                                    |
++-------------------------------------------------+
+8 rows in set (0.0008 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > call crear_rfc();
+ERROR: 1364 (HY000): Field 'nombre' doesn't have a default value
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select * from persona;
++----+---------+------------+------------+------------+-----------+
+| id | nombre  | apat       | amat       | fecha_nac  | clave_rfc |
++----+---------+------------+------------+------------+-----------+
+|  1 | Natalia | Lafourcade | Silva      | 1984-02-26 | NULL      |
+|  2 | Julieta | Venegas    | Percevault | 1970-11-24 | NULL      |
+|  3 | Salma   | Hayek      | Pinault    | 1966-09-02 | NULL      |
+|  4 | charli  | xcx        | NULL       | 1992-08-02 | NULL      |
+|  5 | lana    | del rey    | NULL       | 1985-06-21 | NULL      |
+|  6 | rosalia | vita       | NULL       | 1992-06-25 | NULL      |
+|  7 | beyonce | knowles    | NULL       | 1981-09-04 | NULL      |
+|  8 | lady    | gaga       | NULL       | 1986-03-28 | NULL      |
++----+---------+------------+------------+------------+-----------+
+8 rows in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > call crear_rfc();
+ERROR: 1364 (HY000): Field 'nombre' doesn't have a default value
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select nombre, apat, ifnull(amat, 'x'), fecha_nac from persona;
++---------+------------+-------------------+------------+
+| nombre  | apat       | ifnull(amat, 'x') | fecha_nac  |
++---------+------------+-------------------+------------+
+| Natalia | Lafourcade | Silva             | 1984-02-26 |
+| Julieta | Venegas    | Percevault        | 1970-11-24 |
+| Salma   | Hayek      | Pinault           | 1966-09-02 |
+| charli  | xcx        | x                 | 1992-08-02 |
+| lana    | del rey    | x                 | 1985-06-21 |
+| rosalia | vita       | x                 | 1992-06-25 |
+| beyonce | knowles    | x                 | 1981-09-04 |
+| lady    | gaga       | x                 | 1986-03-28 |
++---------+------------+-------------------+------------+
+8 rows in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > call crear_rfc();
+ERROR: 1364 (HY000): Field 'nombre' doesn't have a default value
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > show create table persona;
++---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table   | Create Table
+
+                                  |
++---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| persona | CREATE TABLE `persona` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) NOT NULL,
+  `apat` varchar(50) NOT NULL,
+  `amat` varchar(50) DEFAULT NULL,
+  `fecha_nac` date NOT NULL,
+  `clave_rfc` varchar(15) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.0008 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > desc persona;
++-----------+-------------+------+-----+---------+----------------+
+| Field     | Type        | Null | Key | Default | Extra          |
++-----------+-------------+------+-----+---------+----------------+
+| id        | int         | NO   | PRI | NULL    | auto_increment |
+| nombre    | varchar(50) | NO   |     | NULL    |                |
+| apat      | varchar(50) | NO   |     | NULL    |                |
+| amat      | varchar(50) | YES  |     | NULL    |                |
+| fecha_nac | date        | NO   |     | NULL    |                |
+| clave_rfc | varchar(15) | YES  |     | NULL    |                |
++-----------+-------------+------+-----+---------+----------------+
+6 rows in set (0.0014 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > call crear_rfc();
+Query OK, 0 rows affected (0.0142 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select * from persona;
++----+---------+------------+------------+------------+--------------+
+| id | nombre  | apat       | amat       | fecha_nac  | clave_rfc    |
++----+---------+------------+------------+------------+--------------+
+|  1 | Natalia | Lafourcade | Silva      | 1984-02-26 | LaSN19840226 |
+|  2 | Julieta | Venegas    | Percevault | 1970-11-24 | VePJ19701124 |
+|  3 | Salma   | Hayek      | Pinault    | 1966-09-02 | HaPS19660902 |
+|  4 | charli  | xcx        | NULL       | 1992-08-02 | xcxc19920802 |
+|  5 | lana    | del rey    | NULL       | 1985-06-21 | dexl19850621 |
+|  6 | rosalia | vita       | NULL       | 1992-06-25 | vixr19920625 |
+|  7 | beyonce | knowles    | NULL       | 1981-09-04 | knxb19810904 |
+|  8 | lady    | gaga       | NULL       | 1986-03-28 | gaxl19860328 |
++----+---------+------------+------------+------------+--------------+
+8 rows in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > call crear_rfc();
+Query OK, 0 rows affected (0.0194 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > call crear_rfc();
+Query OK, 0 rows affected (0.0012 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select * from persona;
++----+---------+------------+------------+------------+--------------+
+| id | nombre  | apat       | amat       | fecha_nac  | clave_rfc    |
++----+---------+------------+------------+------------+--------------+
+|  1 | Natalia | Lafourcade | Silva      | 1984-02-26 | LASN19840226 |
+|  2 | Julieta | Venegas    | Percevault | 1970-11-24 | VEPJ19701124 |
+|  3 | Salma   | Hayek      | Pinault    | 1966-09-02 | HAPS19660902 |
+|  4 | charli  | xcx        | NULL       | 1992-08-02 | XCXC19920802 |
+|  5 | lana    | del rey    | NULL       | 1985-06-21 | DEXL19850621 |
+|  6 | rosalia | vita       | NULL       | 1992-06-25 | VIXR19920625 |
+|  7 | beyonce | knowles    | NULL       | 1981-09-04 | KNXB19810904 |
+|  8 | lady    | gaga       | NULL       | 1986-03-28 | GAXL19860328 |
++----+---------+------------+------------+------------+--------------+
+8 rows in set (0.0004 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL >
